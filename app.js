@@ -7,6 +7,4 @@ app.get('/', (request, respond) => {
 	});
 });
 
-app.listen(port, (request, respond) => {
-	console.log(`Our server is live on ${port}. Yay!`);
-});
+app.listen(port);
