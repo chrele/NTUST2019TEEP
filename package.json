@@ -1,0 +1,23 @@
+{
+  "name": "ioex_pod",
+  "version": "1.0.0",
+  "description": "https://solid.inrupt.com/how-it-works",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dewabharata/ioex_pod.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dewabharata/ioex_pod/issues"
+  },
+  "homepage": "https://github.com/dewabharata/ioex_pod#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
