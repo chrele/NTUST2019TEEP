@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include components/head %>
+</head>
+<body>
+	<div>
+		<form action="/" method="POST" name="formAdd">
+			<div>
+				<label for="_id">_id</label>
+				<input type="text" name="_id" placeholder="Enter _id">
+			</div>
+			<div>
+				<label for="deviceName">deviceName</label>
+				<input type="text" name="deviceName" placeholder="Enter deviceName">
+			</div>
+			<div>
+				<label for="companyName">companyName</label>
+				<input type="text" name="companyName" placeholder="Enter companyName">
+			</div>
+			<div>
+				<label for="departmentName">departmentName</label>
+				<input type="text" name="departmentName" placeholder="Enter departmentName">
+			</div>
+			<div>
+				<label for="location">location</label>
+				<input type="text" name="location" placeholder="Enter location">
+			</div>
+			<div>
+				<label for="principalName">principalName</label>
+				<input type="text" name="principalName" placeholder="Enter principalName">
+			</div>
+			<button type="submit" >Submit</button>
+		</form>
+		<form action="/edit" method="POST" name="formEdit">
+			<div>
+				<label for="_id">_id</label>
+				<input type="text" name="_id" placeholder="Enter _id">
+			</div>
+			<div>
+				<label for="deviceName">deviceName</label>
+				<input type="text" name="deviceName" placeholder="Enter deviceName">
+			</div>
+			<div>
+				<label for="companyName">companyName</label>
+				<input type="text" name="companyName" placeholder="Enter companyName">
+			</div>
+			<div>
+				<label for="departmentName">departmentName</label>
+				<input type="text" name="departmentName" placeholder="Enter departmentName">
+			</div>
+			<div>
+				<label for="location">location</label>
+				<input type="text" name="location" placeholder="Enter location">
+			</div>
+			<div>
+				<label for="principalName">principalName</label>
+				<input type="text" name="principalName" placeholder="Enter principalName">
+			</div>
+			<button type="submit" >Edit</button>
+		</form>
+		<form action="/delete" method="POST" name="formDelete">
+			<div>
+				<label for="_id">_id</label>
+				<input type="text" name="_id" placeholder="Enter _id">
+			</div>
+			<button type="submit" >Delete</button>
+		</form>
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>_id.</th>
+						<th>deviceName</th>
+						<th>companyName</th>
+						<th>departmentName</th>
+						<th>location</th>
+						<th>principalName</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i=1 %>
+					<% if (res) {%>
+					<% res.forEach(function(Device) { %>
+						<tr>
+							<td>
+								<%= i %><% i++ %>
+							</td>
+							<td>
+								<%= Device._id %>
+							</td>
+							<td>
+								<%= Device.deviceName %>
+							</td>
+							<td>
+								<%= Device.companyName %>
+							</td>
+							<td>
+								<%= Device.departmentName %>
+							</td>
+							<td>
+								<%= Device.location %>
+							</td>
+							<td>
+								<%= Device.principalName %>
+							</td>
+						</tr>
+					<% }) %>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		<!-- <a  href="/Devices">View All Data</a> -->
+	</div>
+	<% include components/footer %>
+</body>
+</html>

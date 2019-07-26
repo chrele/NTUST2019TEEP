@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../components/head %>
+</head>
+<body>
+	<main role="main" class="container">
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>_id.</th>
+						<th>Title</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i=1 %>
+					<% if (res) {%>
+					<% res.forEach(function(Cause) { %>
+						<tr>
+							<td>
+								<%= i %><% i++ %>
+							</td>
+							<td>
+								<%= Cause._id %>
+							</td>
+							<td>
+								<%= Cause.title %>
+							</td>
+							<td>
+								<%= Cause.description %>
+							</td>
+						</tr>
+					<% }) %>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+</body>
+</html>
