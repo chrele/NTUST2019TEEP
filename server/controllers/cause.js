@@ -11,11 +11,13 @@ export function createCause(req, res) {
 	return cause
 		.save()
 		.then((newCause) => {
+			res.redirect('/');
 			return res.status(201).json({
 				success: true,
 				message: 'New cause created successfully',
 				Cause: newCause,
 			});
+
 		})
 		.catch((error) => {
 			res.status(500).json({
@@ -24,16 +26,33 @@ export function createCause(req, res) {
 				error: error.message,
 			});
 		});
+	
 }
+
+// export function getAllCause(req, res) {
+// 	Cause.find({}, (err, Cause) => {
+// 		if (err) {
+// 			res.status(500).send(err);
+// 		}
+// 		console.log(Cause);
+// 		res.render('/', {
+// 			res: Cause
+// 		});
+// 	});
+// };
 
 export function getAllCause(req, res){
 	Cause.find()
 		.select('_id title description')
 		.then((allCause) => {
+			// res.render('/', {
+			// 	res: allCause,
+			// });
 			return res.status(200).json({
 				success: true,
 				message: 'A list of all causes',
 				Cause: allCause,
+
 			});
 		})
 		.catch((err) => {
@@ -63,6 +82,7 @@ export function getSingleCause(req, res) {
 			});
 		});
 }
+
 export function updateCause(req, res) {
 	const id = req.params.causeId;
 	const updateObject = req.body;
@@ -93,4 +113,12 @@ export function deleteCause(req, res) {
 		.catch((err) => res.status(500).json({
 			success: false,
 		}));
+	res.redirect('/');
+}
+
+export function home(req, res) {
+	res.render('index.ejs', {
+		title: "TEST",
+		header: "TEST APP",
+	});
 }

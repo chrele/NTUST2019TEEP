@@ -3,14 +3,26 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import logger from 'morgan';
 import mainRoutes from './server/routes/main';
+import path from 'path';
 
 const app = express();
+
+const http = require('http').Server(app);
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/img',express.static(path.join(__dirname, 'assets/img')));
+app.use('/js',express.static(path.join(__dirname, 'public/js')));
+app.use('/css',express.static(path.join(__dirname, 'public/css')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }));
 app.use(logger('dev'));
-app.use('/api/', mainRoutes);
+app.use('/', mainRoutes);
 
 mongoose.connect('mongodb://localhost/projectsupport')
 	.then(()=> {

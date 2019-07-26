@@ -1,12 +1,23 @@
 import express from 'express';
-import { createCause, getAllCause, getSingleCause, updateCause, deleteCause } from '../controllers/cause';
+import { addDevice, createDevice, 
+	getAllDevice, getSingleDevice, 
+	updateDevice, deleteDevice, home } 
+	from '../controllers/device';
 
-const router = express.Router();
+const app = express();
 
-router.post('/causes', createCause);
-router.get('/causes', getAllCause);
-router.get('/causes/:causeId', getSingleCause);
-router.patch('/causes/:causeId', updateCause);
-router.delete('/causes/:causeId', deleteCause);
+app.route('/device/add').get(addDevice);
+app.route('/')
+	.post(createDevice)
+	.get(home);
+app.route('/edit')
+	.post(updateDevice);
+app.route('/delete')
+	.post(deleteDevice);
+	// .get(getAllDevice);
+// app.route('/:DeviceId')
+// 	.get(getSingleDevice)
+// 	.patch(updateDevice)
+// 	.delete(deleteDevice);
 
-export default router;
+export default app;
